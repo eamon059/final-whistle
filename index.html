@@ -87,15 +87,6 @@ button{
 </div>
 
 <script>
-function watchMatch(button){
-  button.innerText = "Watched ✓";
-  button.classList.add("watched");
-
-  const status =
-    button.parentElement.querySelector(".status");
-
-  status.innerText = "Watched";
-  <script>
 let watchedCount = 0;
 
 function watchMatch(button){
@@ -118,5 +109,3 @@ function watchMatch(button){
     "Watched: " + watchedCount + " / 3";
 }
 </script>
-}
-
