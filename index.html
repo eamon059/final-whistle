@@ -51,43 +51,80 @@ button{
 
 <h1>⚽ Final Whistle</h1>
 
-<p>World Cup 2026 Tracker</p>
-<h2 id="counter">Watched: 0 / 3</h2>
-<div class="match">
-  <h3>England vs Croatia</h3>
-  <p>17 June 2026</p>
+<div id="homePage">
+  <h2 id="counter">Watched: 0 / 104</h2>
 
-  <button onclick="watchMatch(this)">
-    Mark Watched
-  </button>
+  <div class="match">
+    <h3>World Cup 2026</h3>
+    <p>Track every match you watch.</p>
 
-  <div class="status">Not Watched</div>
+    <button onclick="showPage('groupsPage')">
+      Group Stage
+    </button>
+
+    <button onclick="showPage('knockoutPage')">
+      Knockout Stage
+    </button>
+
+    <button onclick="showPage('statsPage')">
+      Stats
+    </button>
+  </div>
 </div>
 
-<div class="match">
-  <h3>Argentina vs Algeria</h3>
-  <p>16 June 2026</p>
+<div id="groupsPage" style="display:none">
+  <h2>Group Stage</h2>
 
-  <button onclick="watchMatch(this)">
-    Mark Watched
+  <div class="match">
+    <h3>Group A</h3>
+    <p>Fixtures coming next...</p>
+  </div>
+
+  <div class="match">
+    <h3>Group B</h3>
+    <p>Fixtures coming next...</p>
+  </div>
+
+  <button onclick="showPage('homePage')">
+    Back Home
   </button>
-
-  <div class="status">Not Watched</div>
 </div>
 
-<div class="match">
-  <h3>Spain vs Uruguay</h3>
-  <p>26 June 2026</p>
+<div id="knockoutPage" style="display:none">
+  <h2>Knockout Stage</h2>
 
-  <button onclick="watchMatch(this)">
-    Mark Watched
+  <div class="match">
+    <h3>Round of 32</h3>
+  </div>
+
+  <button onclick="showPage('homePage')">
+    Back Home
   </button>
-
-  <div class="status">Not Watched</div>
 </div>
 
+<div id="statsPage" style="display:none">
+  <h2>Stats</h2>
+
+  <div class="match">
+    <h3>Coming Soon</h3>
+    <p>Ratings and notes.</p>
+  </div>
+
+  <button onclick="showPage('homePage')">
+    Back Home
+  </button>
+</div>
 <script>
-let watchedCount = 0;
+function showPage(page){
+
+  document.getElementById("homePage").style.display = "none";
+  document.getElementById("groupsPage").style.display = "none";
+  document.getElementById("knockoutPage").style.display = "none";
+  document.getElementById("statsPage").style.display = "none";
+
+  document.getElementById(page).style.display = "block";
+}
+  let watchedCount = 0;
 
 function watchMatch(button){
 
