@@ -1,229 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Final Whistle</title>
 
-<title>Final Whistle</title>
-
-<style>
-body{
-  font-family:Arial,sans-serif;
-  background:#0f172a;
-  color:white;
-  margin:0;
-  padding:20px;
-}
-
-h1{
-  text-align:center;
-}
-
-.match{
-  background:#1e293b;
-  padding:15px;
-  margin-bottom:15px;
-  border-radius:12px;
-}
-
-button{
-  background:#22c55e;
-  border:none;
-  color:white;
-  padding:10px 15px;
-  border-radius:8px;
-  margin-top:10px;
-  font-size:16px;
-}
-
-.watched{
-  background:#15803d;
-}
-
-.status{
-  font-weight:bold;
-  margin-top:10px;
-}
-</style>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<h1>⚽ Final Whistle</h1>
+  <header>
+    <h1>⚽ Final Whistle</h1>
+  </header>
 
-<div id="homePage">
-  <h2 id="counter">Watched: 0 / 104</h2>
+  <main id="app">
 
-  <div class="match">
-    <h3>World Cup 2026</h3>
-    <p>Track every match you watch.</p>
+    <section id="homePage">
+      <h2>Track Every World Cup 2026 Match</h2>
 
-    <button onclick="showPage('groupsPage')">
-      Group Stage
-    </button>
+      <div class="card">
+        <h3 id="counter">Watched: 0 / 104</h3>
 
-    <button onclick="showPage('knockoutPage')">
-      Knockout Stage
-    </button>
+        <button onclick="showGroups()">
+          Group Stage
+        </button>
 
-    <button onclick="showPage('statsPage')">
-      Stats
-    </button>
-  </div>
-</div>
+        <button onclick="showKnockout()">
+          Knockout Stage
+        </button>
 
-<div id="groupsPage" style="display:none">
-  <h2>Group Stage</h2>
-<div class="match">
-  <h3>Group A</h3>
-  <p>8 matches</p>
+        <button onclick="showStats()">
+          Stats
+        </button>
+      </div>
+    </section>
 
-  <button onclick="showPage('groupAPage')">
-    Open Group
-  </button>
-</div>
-  <div class="match">
-  <h3>Group B</h3>
-  <p>8 matches</p>
-</div>
+    <section id="groupsPage" class="hidden">
+      <h2>Groups</h2>
 
-<div class="match">
-  <h3>Group C</h3>
-  <p>8 matches</p>
-</div>
+      <div id="groupsContainer"></div>
 
-<div class="match">
-  <h3>Group D</h3>
-  <p>8 matches</p>
-</div>
+      <button onclick="goHome()">
+        Back Home
+      </button>
+    </section>
 
-<div class="match">
-  <h3>Group E</h3>
-  <p>8 matches</p>
-</div>
+    <section id="statsPage" class="hidden">
+      <h2>Stats</h2>
 
-<div class="match">
-  <h3>Group F</h3>
-  <p>8 matches</p>
-</div>
+      <div class="card">
+        <p id="statsWatched">Matches watched: 0</p>
+      </div>
 
-<div class="match">
-  <h3>Group G</h3>
-  <p>8 matches</p>
-</div>
+      <button onclick="goHome()">
+        Back Home
+      </button>
+    </section>
 
-<div class="match">
-  <h3>Group H</h3>
-  <p>8 matches</p>
-</div>
+    <section id="knockoutPage" class="hidden">
+      <h2>Knockout Stage</h2>
 
-  <button onclick="showPage('homePage')">
-    Back Home
-  </button>
-</div>
+      <div id="knockoutContainer"></div>
 
-<div id="knockoutPage" style="display:none">
-  <h2>Knockout Stage</h2>
+      <button onclick="goHome()">
+        Back Home
+      </button>
+    </section>
 
-  <div class="match">
-    <h3>Round of 32</h3>
-  </div>
+  </main>
 
-  <button onclick="showPage('homePage')">
-    Back Home
-  </button>
-</div>
+  <script src="fixtures.js"></script>
+  <script src="script.js"></script>
+  <script type="module" src="firebase.js"></script>
 
-<div id="statsPage" style="display:none">
-  <h2>Stats</h2>
-
-  <div class="match">
-    <h3>Your World Cup Stats</h3>
-    <p>Matches watched: 0</p>
-    <p>Average rating: -</p>
-    <p>Notes saved: 0</p>
-</div>
-
-  <button onclick="showPage('homePage')">
-    Back Home
-  </button>
-</div>
-  <div id="groupAPage" style="display:none">
-
-<h2>Group A Fixtures</h2>
-
-<div class="match">
-
-  <h3>Mexico vs Team TBD</h3>
-
-  <p>11 June 2026</p>
-
-  <button onclick="showPage('match1Page')">
-    Open Match
-  </button>
-
-</div>
-
-<div class="match">
-    <h3>Team TBD vs Team TBD</h3>
-    <p>11 June 2026</p>
-</div>
-
-<button onclick="showPage('groupsPage')">
-    Back to Groups
-</button>
-
-</div>
-  <div id="match1Page" style="display:none">
-
-<h2>Mexico vs Team TBD</h2>
-
-<div class="match">
-  <p>Date: 11 June 2026</p>
-  <p>Watched: No</p>
-  <p>Rating: -</p>
-  <p>Notes: None</p>
-</div>
-
-<button onclick="showPage('groupAPage')">
-  Back to Group A
-</button>
-
-</div>
-<script>
-function showPage(page){
-
-  document.getElementById("homePage").style.display = "none";
-  document.getElementById("groupsPage").style.display = "none";
-  document.getElementById("knockoutPage").style.display = "none";
-  document.getElementById("statsPage").style.display = "none";
-  document.getElementById("groupAPage").style.display = "none";
-document.getElementById("match1Page").style.display = "none";
-  
-  document.getElementById(page).style.display = "block";
-}
-  let watchedCount = 0;
-
-function watchMatch(button){
-
-  if(button.innerText === "Watched ✓"){
-    return;
-  }
-
-  button.innerText = "Watched ✓";
-  button.classList.add("watched");
-
-  const status =
-    button.parentElement.querySelector(".status");
-
-  status.innerText = "Watched";
-
-  watchedCount++;
-
-  document.getElementById("counter").innerText =
-    "Watched: " + watchedCount + " / 3";
-}
-  </script>
 </body>
 </html>
-
