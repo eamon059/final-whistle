@@ -153,8 +153,15 @@ button{
 <h2>Group A Fixtures</h2>
 
 <div class="match">
-    <h3>Mexico vs Team TBD</h3>
-    <p>11 June 2026</p>
+
+  <h3>Mexico vs Team TBD</h3>
+
+  <p>11 June 2026</p>
+
+  <button onclick="showPage('match1Page')">
+    Open Match
+  </button>
+
 </div>
 
 <div class="match">
@@ -167,6 +174,22 @@ button{
 </button>
 
 </div>
+  <div id="match1Page" style="display:none">
+
+<h2>Mexico vs Team TBD</h2>
+
+<div class="match">
+  <p>Date: 11 June 2026</p>
+  <p>Watched: No</p>
+  <p>Rating: -</p>
+  <p>Notes: None</p>
+</div>
+
+<button onclick="showPage('groupAPage')">
+  Back to Group A
+</button>
+
+</div>
 <script>
 function showPage(page){
 
@@ -175,7 +198,8 @@ function showPage(page){
   document.getElementById("knockoutPage").style.display = "none";
   document.getElementById("statsPage").style.display = "none";
   document.getElementById("groupAPage").style.display = "none";
-
+document.getElementById("match1Page").style.display = "none";
+  
   document.getElementById(page).style.display = "block";
 }
   let watchedCount = 0;
