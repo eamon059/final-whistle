@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+w<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -74,7 +74,14 @@ button{
 
 <div id="groupsPage" style="display:none">
   <h2>Group Stage</h2>
+<div class="match">
+  <h3>Group A</h3>
+  <p>8 matches</p>
 
+  <button onclick="showPage('groupAPage')">
+    Open Group
+  </button>
+</div>
   <div class="match">
   <h3>Group B</h3>
   <p>8 matches</p>
@@ -141,6 +148,25 @@ button{
     Back Home
   </button>
 </div>
+  <div id="groupAPage" style="display:none">
+
+<h2>Group A Fixtures</h2>
+
+<div class="match">
+    <h3>Mexico vs Team TBD</h3>
+    <p>11 June 2026</p>
+</div>
+
+<div class="match">
+    <h3>Team TBD vs Team TBD</h3>
+    <p>11 June 2026</p>
+</div>
+
+<button onclick="showPage('groupsPage')">
+    Back to Groups
+</button>
+
+</div>
 <script>
 function showPage(page){
 
@@ -148,6 +174,7 @@ function showPage(page){
   document.getElementById("groupsPage").style.display = "none";
   document.getElementById("knockoutPage").style.display = "none";
   document.getElementById("statsPage").style.display = "none";
+  document.getElementById("groupAPage").style.display = "none";
 
   document.getElementById(page).style.display = "block";
 }
