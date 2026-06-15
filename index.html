@@ -2,39 +2,101 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Final Whistle</title>
 
 <style>
 body{
-font-family:Arial,sans-serif;
-background:#0f172a;
-color:white;
-text-align:center;
-padding:40px;
+  font-family:Arial,sans-serif;
+  background:#0f172a;
+  color:white;
+  margin:0;
+  padding:20px;
+}
+
+h1{
+  text-align:center;
+}
+
+.match{
+  background:#1e293b;
+  padding:15px;
+  margin-bottom:15px;
+  border-radius:12px;
 }
 
 button{
-background:#22c55e;
-border:none;
-padding:15px 25px;
-border-radius:10px;
-font-size:18px;
-color:white;
+  background:#22c55e;
+  border:none;
+  color:white;
+  padding:10px 15px;
+  border-radius:8px;
+  margin-top:10px;
+  font-size:16px;
+}
+
+.watched{
+  background:#15803d;
+}
+
+.status{
+  font-weight:bold;
+  margin-top:10px;
 }
 </style>
-
 </head>
 
 <body>
 
 <h1>⚽ Final Whistle</h1>
 
-<p>Your World Cup Tracker is live.</p>
+<p>World Cup 2026 Tracker</p>
 
-<button onclick="alert('Final Whistle is working!')">
-Test App
-</button>
+<div class="match">
+  <h3>England vs Croatia</h3>
+  <p>17 June 2026</p>
+
+  <button onclick="watchMatch(this)">
+    Mark Watched
+  </button>
+
+  <div class="status">Not Watched</div>
+</div>
+
+<div class="match">
+  <h3>Argentina vs Algeria</h3>
+  <p>16 June 2026</p>
+
+  <button onclick="watchMatch(this)">
+    Mark Watched
+  </button>
+
+  <div class="status">Not Watched</div>
+</div>
+
+<div class="match">
+  <h3>Spain vs Uruguay</h3>
+  <p>26 June 2026</p>
+
+  <button onclick="watchMatch(this)">
+    Mark Watched
+  </button>
+
+  <div class="status">Not Watched</div>
+</div>
+
+<script>
+function watchMatch(button){
+  button.innerText = "Watched ✓";
+  button.classList.add("watched");
+
+  const status =
+    button.parentElement.querySelector(".status");
+
+  status.innerText = "Watched";
+}
+</script>
 
 </body>
 </html>
